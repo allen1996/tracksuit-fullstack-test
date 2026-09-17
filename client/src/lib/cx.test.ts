@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { cx } from "./cx.ts";
+import { cx } from "$lib/cx.ts";
 
 describe("cx", () => {
   it("joins strings", () => {

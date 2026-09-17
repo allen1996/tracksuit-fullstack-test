@@ -64,3 +64,26 @@ deno lint
 ```
 deno fmt
 ```
+
+### Import aliases
+
+Use `$` aliases for imports between TypeScript modules. Keep component stylesheets
+relative to their components.
+
+| Alias | Location |
+| --- | --- |
+| `$utils/` | Shared `lib/utils/` (client and server) |
+| `$components/` | `client/src/components/` |
+| `$lib/` | `client/src/lib/` |
+| `$routes/` | `client/src/routes/` |
+| `$schemas/` | `client/src/schemas/` |
+| `$styles/` | `client/src/styles/` |
+| `$models/` | `server/models/` |
+| `$tables/` | `server/tables/` |
+| `$operations/` | `server/operations/` |
+| `$shared` | `server/shared.ts` |
+| `$testing` | `server/testing.ts` |
+
+Define shared aliases in the root `deno.json` and package aliases in the relevant
+package's `deno.json`. Vite and Vitest read the client and shared aliases from
+these configs automatically.

@@ -1,5 +1,5 @@
 import type { Insight } from "$models/insight.ts";
-import type { HasDBClient } from "../shared.ts";
+import type { HasDBClient } from "$shared";
 import type * as insightsTable from "$tables/insights.ts";
 
 type Input = HasDBClient & {

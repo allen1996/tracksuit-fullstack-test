@@ -3,7 +3,7 @@ import { XIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
-import { cx } from "../../lib/cx.ts";
+import { cx } from "$lib/cx.ts";
 import styles from "./modal.module.css";
 
 export type ModalProps = {

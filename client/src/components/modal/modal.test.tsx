@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { Modal } from "./modal.tsx";
+import { Modal } from "$components/modal/modal.tsx";
 
 describe("Modal", () => {
   it("should open and close", () => {

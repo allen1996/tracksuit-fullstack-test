@@ -1,8 +1,8 @@
 import { beforeAll, describe, it } from "@std/testing/bdd";
 import { expect } from "@std/expect";
-import { withDB } from "../testing.ts";
+import { withDB } from "$testing";
 import type { Insight } from "$models/insight.ts";
-import lookupInsight from "./lookup-insight.ts";
+import lookupInsight from "$operations/lookup-insight.ts";
 
 describe("listing insights in the database", () => {
   describe("specified insight not in the DB", () => {

@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { render } from "@testing-library/react";
-import { Insights } from "./insights.tsx";
-import type { Insight } from "../../schemas/insight.ts";
+import { Insights } from "$components/insights/insights.tsx";
+import type { Insight } from "$schemas/insight.ts";
 
 const TEST_INSIGHTS: Insight[] = [
   {

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Button } from "../button/button.tsx";
+import { Button } from "$components/button/button.tsx";
 import styles from "./header.module.css";
-import { AddInsight } from "../add-insight/add-insight.tsx";
+import { AddInsight } from "$components/add-insight/add-insight.tsx";
 
 export const HEADER_TEXT = "Suit Tracker Insights";
 

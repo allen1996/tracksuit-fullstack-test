@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { Button } from "./button.tsx";
+import { Button } from "$components/button/button.tsx";
 import { render } from "@testing-library/react";
 
 describe("button", () => {

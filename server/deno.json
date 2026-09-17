@@ -13,6 +13,9 @@
     "@std/testing": "jsr:@std/testing@^1.0.5",
     "zod": "npm:zod@^3.23.8",
     "$models/": "./models/",
-    "$tables/": "./tables/"
+    "$tables/": "./tables/",
+    "$operations/": "./operations/",
+    "$shared": "./shared.ts",
+    "$testing": "./testing.ts"
   }
 }

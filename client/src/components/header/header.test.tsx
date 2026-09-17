@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { Header, HEADER_TEXT } from "./header.tsx";
+import { Header, HEADER_TEXT } from "$components/header/header.tsx";
 import { render } from "@testing-library/react";
 
 describe("header", () => {

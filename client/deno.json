@@ -27,6 +27,11 @@
     "sanitize.css": "npm:sanitize.css@^13.0.0",
     "vite": "npm:vite@^6.0.3",
     "vitest": "npm:vitest@^3.0.2",
-    "zod": "npm:zod@^3.23.8"
+    "zod": "npm:zod@^3.23.8",
+    "$components/": "./src/components/",
+    "$lib/": "./src/lib/",
+    "$routes/": "./src/routes/",
+    "$schemas/": "./src/schemas/",
+    "$styles/": "./src/styles/"
   }
 }

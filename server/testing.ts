@@ -1,6 +1,6 @@
 import { Database } from "@db/sqlite";
 import * as insightsTable from "$tables/insights.ts";
-import type { HasDBClient } from "./shared.ts";
+import type { HasDBClient } from "$shared";
 import { afterAll, beforeAll } from "@std/testing/bdd";
 
 type Fixture = HasDBClient & {
