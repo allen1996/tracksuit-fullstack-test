@@ -1,7 +1,7 @@
+import { z } from "zod";
 import type { Router } from "@oak/oak";
 import type { Database } from "@db/sqlite";
 import lookupInsight from "$operations/lookup-insight.ts";
-import { z } from "zod";
 
 const InsightId = z.coerce.number().int().positive().safe();
 
