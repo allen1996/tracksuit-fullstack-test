@@ -106,14 +106,14 @@ describe("App", () => {
 
     render(<App />);
     await screen.findByText("Your next great idea starts here");
-    fireEvent.click(screen.getAllByRole("button", { name: "Add insight" })[0]);
+    fireEvent.click(screen.getAllByRole("button", { name: "Add Insight" })[0]);
     fireEvent.change(screen.getByRole("combobox", { name: "Brand" }), {
       target: { value: "2" },
     });
     fireEvent.change(screen.getByRole("textbox", { name: "Insight" }), {
       target: { value: "New insight" },
     });
-    fireEvent.click(screen.getAllByRole("button", { name: "Add insight" })[1]);
+    fireEvent.click(screen.getAllByRole("button", { name: "Add Insight" })[1]);
 
     expect(await screen.findByText("New insight")).toBeTruthy();
     expect(fetchMock).toHaveBeenLastCalledWith("/api/insights/create", {

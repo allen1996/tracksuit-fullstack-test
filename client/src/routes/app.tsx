@@ -61,7 +61,7 @@ export const App = () => {
           <div className={styles.toolbar}>
             <div>
               <h2 className={styles.heading} id="insights-title">
-                Your insights {insights !== null && <span className={styles.count}>{insights.length}</span>}
+                Your Insights {insights !== null && <span className={styles.count}>{insights.length}</span>}
               </h2>
               <p className={styles.subtitle}>Fresh perspectives, all in one place.</p>
             </div>
@@ -69,7 +69,7 @@ export const App = () => {
               {brandCount > 0 && (
                 <span className={styles.total}>{brandCount} {brandCount === 1 ? "brand" : "brands"} in view</span>
               )}
-              <Button label="Add insight" onClick={() => setAddInsightOpen(true)} />
+              <Button label="Add Insight" onClick={() => setAddInsightOpen(true)} />
             </div>
           </div>
           {error && insights === null

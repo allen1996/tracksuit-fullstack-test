@@ -79,7 +79,7 @@ export const AddInsight = ({
         <Button
           className={styles.submit}
           type="submit"
-          label={saving ? "Adding..." : "Add insight"}
+          label={saving ? "Adding..." : "Add Insight"}
           disabled={saving}
         />
       </form>
