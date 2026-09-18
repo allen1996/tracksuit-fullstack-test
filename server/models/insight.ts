@@ -6,5 +6,10 @@ export const Insight = z.object({
   createdAt: z.date(),
   text: z.string(),
 });
-
 export type Insight = z.infer<typeof Insight>;
+
+export const CreateInsight = Insight.pick({
+  brand: true,
+  text: true,
+});
+export type CreateInsight = z.infer<typeof CreateInsight>;

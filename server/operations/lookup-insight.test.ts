@@ -1,6 +1,6 @@
 import { beforeAll, describe, it } from "@std/testing/bdd";
 import { expect } from "@std/expect";
-import { withDB } from "$testing";
+import { withDB } from "$server-utils/testing.ts";
 import type { Insight } from "$models/insight.ts";
 import lookupInsight from "$operations/lookup-insight.ts";
 

@@ -16,7 +16,6 @@
     "$models/": "./models/",
     "$tables/": "./tables/",
     "$operations/": "./operations/",
-    "$shared": "./shared.ts",
-    "$testing": "./testing.ts"
+    "$server-utils/": "./utils/"
   }
 }

@@ -1,7 +1,7 @@
 import { Application, Router } from "@oak/oak";
 import { expect } from "@std/expect";
 import { beforeAll, describe, it } from "@std/testing/bdd";
-import { withDB } from "$testing";
+import { withDB } from "$server-utils/testing.ts";
 import { registerListInsightsRoute } from "./list-insights.ts";
 
 describe("GET /insights", () => {

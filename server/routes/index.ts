@@ -9,7 +9,7 @@ import { registerLookupInsightRoute } from "./lookup-insight.ts";
 export function registerRoutes(router: Router, db: Database): void {
   registerHealthRoute(router);
   registerListInsightsRoute(router, db);
-  registerCreateInsightRoute(router);
+  registerCreateInsightRoute(router, db);
   registerDeleteInsightRoute(router);
   registerLookupInsightRoute(router, db);
 }

@@ -81,8 +81,7 @@ relative to their components.
 | `$models/` | `server/models/` |
 | `$tables/` | `server/tables/` |
 | `$operations/` | `server/operations/` |
-| `$shared` | `server/shared.ts` |
-| `$testing` | `server/testing.ts` |
+| `$server-utils/` | `server/utils/` |
 
 Define shared aliases in the root `deno.json` and package aliases in the relevant
 package's `deno.json`. Vite and Vitest read the client and shared aliases from
