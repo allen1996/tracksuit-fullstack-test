@@ -1,4 +1,3 @@
-import "@fontsource-variable/quicksand";
 import "sanitize.css";
 import "sanitize.css/assets.css";
 import "sanitize.css/forms.css";
