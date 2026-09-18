@@ -10,6 +10,6 @@ export function registerRoutes(router: Router, db: Database): void {
   registerHealthRoute(router);
   registerListInsightsRoute(router, db);
   registerCreateInsightRoute(router, db);
-  registerDeleteInsightRoute(router);
+  registerDeleteInsightRoute(router, db);
   registerLookupInsightRoute(router, db);
 }

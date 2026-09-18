@@ -1,9 +1,7 @@
-import { z } from "zod";
 import type { Router } from "@oak/oak";
 import type { Database } from "@db/sqlite";
+import { InsightId } from "$models/insight.ts";
 import lookupInsight from "$operations/lookup-insight.ts";
-
-const InsightId = z.coerce.number().int().positive().safe();
 
 export function registerLookupInsightRoute(router: Router, db: Database): void {
   router.get("/insights/:id", (ctx) => {

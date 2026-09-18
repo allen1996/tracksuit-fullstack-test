@@ -21,4 +21,5 @@ export type Insert = {
 };
 
 // updated query to use bounded parameters to avoid sql injection
-export const insertStatement = "INSERT INTO insights (brand, createdAt, text) VALUES (?, ?, ?)";
+export const insertInsightStatement = "INSERT INTO insights (brand, createdAt, text) VALUES (?, ?, ?)";
+export const deleteInsightStatement = "DELETE FROM insights WHERE id = ?";

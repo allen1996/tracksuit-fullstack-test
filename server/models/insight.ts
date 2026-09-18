@@ -13,3 +13,5 @@ export const CreateInsight = Insight.pick({
   text: true,
 });
 export type CreateInsight = z.infer<typeof CreateInsight>;
+
+export const InsightId = z.coerce.number().int().positive().safe();
