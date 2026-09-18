@@ -1,7 +1,6 @@
 # Take-Home Test (TypeScript)
 
-This is a template for a take-home test. See the [Instructions][Instructions]
-for details on the activity.
+This is a template for a take-home test. See the [Instructions][Instructions] for details on the activity.
 
 **Set Up Your Repository**
 
@@ -12,7 +11,8 @@ for details on the activity.
 
 **Submit Your Work**
 
-Once you’ve completed the task, please add the `tracksuit-technical-test` Github user as a collaborator, and share the repo link with the talent manager.
+Once you’ve completed the task, please add the `tracksuit-technical-test` Github user as a collaborator, and share the
+repo link with the talent manager.
 
 <!-- Link definitions -->
 
@@ -22,9 +22,8 @@ Once you’ve completed the task, please add the `tracksuit-technical-test` Gith
 
 ## Setup
 
-Install Deno 2 using your preferred method--typically this would be your
-system's package manager. See [Deno's installation instructions][DenoInstall] to
-find the command that's right for you.
+Install Deno 2 using your preferred method--typically this would be your system's package manager. See
+[Deno's installation instructions][DenoInstall] to find the command that's right for you.
 
 <!-- deno-fmt-ignore-start -->
 
@@ -38,8 +37,8 @@ This repo was developed against Deno 2.1.2.
 
 ## Common tasks
 
-Most of the commands you'll need are provided by the Deno toolchain. You can run
-tasks either from the repo root or within each package
+Most of the commands you'll need are provided by the Deno toolchain. You can run tasks either from the repo root or
+within each package
 
 ### Running client and server
 
@@ -67,23 +66,21 @@ deno fmt
 
 ### Import aliases
 
-Use `$` aliases for imports between TypeScript modules. Keep component stylesheets
-relative to their components.
+Use `$` aliases for imports between TypeScript modules. Keep component stylesheets relative to their components.
 
-| Alias | Location |
-| --- | --- |
-| `$utils/` | Shared `lib/utils/` (client and server) |
-| `$components/` | `client/src/components/` |
-| `$hooks/` | `client/src/hooks/` |
-| `$lib/` | `client/src/lib/` |
-| `$routes/` | `client/src/routes/` |
-| `$schemas/` | `client/src/schemas/` |
-| `$styles/` | `client/src/styles/` |
-| `$models/` | `server/models/` |
-| `$tables/` | `server/tables/` |
-| `$operations/` | `server/operations/` |
-| `$server-utils/` | `server/utils/` |
+| Alias            | Location                                |
+| ---------------- | --------------------------------------- |
+| `$utils/`        | Shared `lib/utils/` (client and server) |
+| `$components/`   | `client/src/components/`                |
+| `$hooks/`        | `client/src/hooks/`                     |
+| `$lib/`          | `client/src/lib/`                       |
+| `$routes/`       | `client/src/routes/`                    |
+| `$schemas/`      | `client/src/schemas/`                   |
+| `$styles/`       | `client/src/styles/`                    |
+| `$models/`       | `server/models/`                        |
+| `$tables/`       | `server/tables/`                        |
+| `$operations/`   | `server/operations/`                    |
+| `$server-utils/` | `server/utils/`                         |
 
-Define shared aliases in the root `deno.json` and package aliases in the relevant
-package's `deno.json`. Vite and Vitest read the client and shared aliases from
-these configs automatically.
+Define shared aliases in the root `deno.json` and package aliases in the relevant package's `deno.json`. Vite and Vitest
+read the client and shared aliases from these configs automatically.

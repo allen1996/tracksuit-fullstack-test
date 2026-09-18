@@ -39,18 +39,20 @@ export default defineConfig(({ command }) => ({
       },
     },
   },
-  server: command === "serve" ? {
-    port: Port.parse(Deno.env.get("CLIENT_PORT")),
-    fs: {
-      allow: [searchForWorkspaceRoot(process.cwd()), "../../node_modules"],
-    },
-    proxy: {
-      "/api": {
-        target: `${Deno.env.get("SERVER_BASE_URL")}:${Port.parse(Deno.env.get("SERVER_PORT"))}`,
-        changeOrigin: true,
+  server: command === "serve"
+    ? {
+      port: Port.parse(Deno.env.get("CLIENT_PORT")),
+      fs: {
+        allow: [searchForWorkspaceRoot(process.cwd()), "../../node_modules"],
       },
-    },
-  } : undefined,
+      proxy: {
+        "/api": {
+          target: `${Deno.env.get("SERVER_BASE_URL")}:${Port.parse(Deno.env.get("SERVER_PORT"))}`,
+          changeOrigin: true,
+        },
+      },
+    }
+    : undefined,
   test: {
     environment: "jsdom",
     setupFiles: ["./vitest.setup.ts"],
