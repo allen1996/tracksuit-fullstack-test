@@ -21,13 +21,7 @@ const aliases = [
     }))
 );
 
-const env = {
-  clientPort: Port.parse(Deno.env.get("CLIENT_PORT")),
-  servereBaseUrl: String(Deno.env.get("SERVER_BASE_URL")),
-  serverPort: Port.parse(Deno.env.get("SERVER_PORT")),
-};
-
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   root: "./src",
   build: {
     outDir: "./dist",
@@ -45,21 +39,20 @@ export default defineConfig({
       },
     },
   },
-  server: {
-    port: env.clientPort,
+  server: command === "serve" ? {
+    port: Port.parse(Deno.env.get("CLIENT_PORT")),
     fs: {
       allow: [searchForWorkspaceRoot(process.cwd()), "../../node_modules"],
     },
     proxy: {
       "/api": {
-        target: `${env.servereBaseUrl}:${env.serverPort}`,
+        target: `${Deno.env.get("SERVER_BASE_URL")}:${Port.parse(Deno.env.get("SERVER_PORT"))}`,
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
-  },
+  } : undefined,
   test: {
     environment: "jsdom",
     setupFiles: ["./vitest.setup.ts"],
   },
-});
+}));
