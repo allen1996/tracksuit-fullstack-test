@@ -15,14 +15,14 @@ export const Insights = ({ insights, className }: InsightsProps) => {
     <div className={cx(className)}>
       <h1 className={styles.heading}>Insights</h1>
       <div className={styles.list}>
-        {insights?.length
+        {insights.length
           ? (
-            insights.map(({ id, text, date, brandId }) => (
+            insights.map(({ id, text, createdAt, brand }) => (
               <div className={styles.insight} key={id}>
                 <div className={styles["insight-meta"]}>
-                  <span>{brandId}</span>
+                  <span>{brand}</span>
                   <div className={styles["insight-meta-details"]}>
-                    <span>{date.toString()}</span>
+                    <span>{createdAt.toString()}</span>
                     <Trash2Icon
                       className={styles["insight-delete"]}
                       onClick={deleteInsight}

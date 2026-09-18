@@ -74,6 +74,7 @@ relative to their components.
 | --- | --- |
 | `$utils/` | Shared `lib/utils/` (client and server) |
 | `$components/` | `client/src/components/` |
+| `$hooks/` | `client/src/hooks/` |
 | `$lib/` | `client/src/lib/` |
 | `$routes/` | `client/src/routes/` |
 | `$schemas/` | `client/src/schemas/` |

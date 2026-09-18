@@ -6,11 +6,11 @@ import type { Insight } from "$schemas/insight.ts";
 const TEST_INSIGHTS: Insight[] = [
   {
     id: 1,
-    brandId: 1,
-    date: new Date(),
+    brand: 1,
+    createdAt: new Date(),
     text: "Test insight",
   },
-  { id: 2, brandId: 2, date: new Date(), text: "Another test insight" },
+  { id: 2, brand: 2, createdAt: new Date(), text: "Another test insight" },
 ];
 
 describe("insights", () => {
