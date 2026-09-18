@@ -29,3 +29,7 @@
 .submit {
   align-self: flex-end;
 }
+
+.error-message {
+  color: var(--color-red-500);
+}

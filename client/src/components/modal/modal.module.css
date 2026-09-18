@@ -12,6 +12,10 @@
   backdrop-filter: blur(3px);
 }
 
+.centered {
+  align-items: center;
+}
+
 .modal {
   position: relative;
   display: flex;
@@ -24,6 +28,17 @@
   padding: var(--size-10);
   box-shadow: var(--shadow-md);
   border-radius: var(--radius-xl);
+}
+
+.small {
+  max-width: var(--width-xs);
+  gap: var(--size-6);
+  padding: var(--size-6);
+  translate: 0 -100%;
+
+  @media (max-height: 700px) {
+    translate: none;
+  }
 }
 
 .close {

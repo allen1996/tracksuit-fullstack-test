@@ -1,19 +1,58 @@
+import { type FormEvent, useState } from "react";
 import { BRANDS } from "$lib/consts.ts";
 import { Button } from "$components/button/button.tsx";
 import { Modal, type ModalProps } from "$components/modal/modal.tsx";
+import type { CreateInsight } from "$schemas/insight.ts";
 import styles from "./add-insight.module.css";
 
-type AddInsightProps = ModalProps;
+type AddInsightProps = ModalProps & {
+  onAdd(input: CreateInsight): Promise<void>;
+};
 
-export const AddInsight = (props: AddInsightProps) => {
-  const addInsight = () => undefined;
+export const AddInsight = ({
+  onAdd,
+  onClose,
+  ...modalProps
+}: AddInsightProps) => {
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const close = () => {
+    setError(null);
+    onClose();
+  };
+
+  const addInsight = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const text = String(formData.get("text") ?? "").trim();
+
+    if (!text) {
+      setError("Insight is required.");
+      return;
+    }
+
+    setSaving(true);
+    setError(null);
+    try {
+      await onAdd({ brand: Number(formData.get("brand")), text });
+      form.reset();
+      close();
+    } catch {
+      setError("Could not add insight. Please try again.");
+    } finally {
+      setSaving(false);
+    }
+  };
 
   return (
-    <Modal {...props}>
+    <Modal {...modalProps} onClose={close} ariaLabel="Add a new insight">
       <h1 className={styles.heading}>Add a new insight</h1>
       <form className={styles.form} onSubmit={addInsight}>
         <label className={styles.field}>
-          <select className={styles["field-input"]}>
+          Brand
+          <select className={styles["field-input"]} name="brand" required>
             {BRANDS.map(({ id, name }) => (
               <option key={id} value={id}>
                 {name}
@@ -25,11 +64,22 @@ export const AddInsight = (props: AddInsightProps) => {
           Insight
           <textarea
             className={styles["field-input"]}
+            name="text"
             rows={5}
             placeholder="Something insightful..."
           />
         </label>
-        <Button className={styles.submit} type="submit" label="Add insight" />
+        {error && (
+          <div role="alert" className={styles["error-message"]}>
+            {error}
+          </div>
+        )}
+        <Button
+          className={styles.submit}
+          type="submit"
+          label={saving ? "Adding..." : "Add insight"}
+          disabled={saving}
+        />
       </form>
     </Modal>
   );

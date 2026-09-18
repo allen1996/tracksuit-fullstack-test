@@ -4,12 +4,12 @@ import { useInsights } from "$hooks/use-insights.ts";
 import styles from "./app.module.css";
 
 export const App = () => {
-  const { insights, error } = useInsights();
+  const { insights, error, addInsight, deleteInsight } = useInsights();
 
   return (
     <main className={styles.main}>
-      <Header />
-      {error
+      <Header onAddInsight={addInsight} />
+      {error && insights === null
         ? (
           <p className={styles.insights} role="alert">
             Could not load insights.
@@ -21,7 +21,7 @@ export const App = () => {
             Loading insights...
           </p>
         )
-        : <Insights className={styles.insights} insights={insights} />}
+        : <Insights className={styles.insights} insights={insights} onDelete={deleteInsight} />}
     </main>
   );
 };

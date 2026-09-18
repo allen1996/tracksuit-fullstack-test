@@ -8,3 +8,6 @@ export const Insight = z.object({
 });
 
 export type Insight = z.infer<typeof Insight>;
+
+export const CreateInsight = Insight.pick({ brand: true, text: true });
+export type CreateInsight = z.infer<typeof CreateInsight>;

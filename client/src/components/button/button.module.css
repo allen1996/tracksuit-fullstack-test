@@ -25,4 +25,11 @@
     color: currentColor;
     border: 1px solid;
   }
+  &.danger {
+    background: var(--color-red-700);
+    color: var(--color-bg);
+    &:hover {
+      background: var(--color-red-500);
+    }
+  }
 }

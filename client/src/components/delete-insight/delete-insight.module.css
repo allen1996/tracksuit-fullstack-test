@@ -1,0 +1,16 @@
+.heading {
+  font: var(--text-xl);
+  font-weight: var(--weight-medium);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--size-3);
+  margin-top: var(--size-6);
+}
+
+.error {
+  color: var(--color-red-700);
+  margin-top: var(--size-4);
+}

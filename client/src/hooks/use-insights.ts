@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Insight } from "$schemas/insight.ts";
+import { type CreateInsight, Insight } from "$schemas/insight.ts";
 
 async function fetchInsights(signal: AbortSignal): Promise<Insight[]> {
   const response = await fetch("/api/insights", { signal });
@@ -16,7 +16,13 @@ export function useInsights() {
     const controller = new AbortController();
     fetchInsights(controller.signal)
       .then((data) => {
-        if (!controller.signal.aborted) setInsights(data);
+        if (!controller.signal.aborted) {
+          setInsights((current) => {
+            if (!current) return data;
+            const loadedIds = new Set(data.map(({ id }) => id));
+            return [...data, ...current.filter(({ id }) => !loadedIds.has(id))];
+          });
+        }
       })
       .catch(() => {
         if (!controller.signal.aborted) setError(true);
@@ -24,5 +30,24 @@ export function useInsights() {
     return () => controller.abort();
   }, []);
 
-  return { insights, error };
+  const addInsight = async (input: CreateInsight): Promise<void> => {
+    const response = await fetch("/api/insights/create", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(input),
+    });
+    if (!response.ok) throw new Error("Failed to add insight");
+
+    const created = Insight.parse(await response.json());
+    setInsights((current) => [...(current ?? []), created]);
+    setError(false);
+  };
+
+  const deleteInsight = async (id: number): Promise<void> => {
+    const response = await fetch(`/api/insights/${id}`, { method: "DELETE" });
+    if (!response.ok) throw new Error("Failed to delete insight");
+    setInsights((current) => current?.filter((insight) => insight.id !== id) ?? null);
+  };
+
+  return { insights, error, addInsight, deleteInsight };
 }

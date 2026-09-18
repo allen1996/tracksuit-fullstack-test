@@ -11,6 +11,10 @@ export type ModalProps = {
   open: boolean;
   /** Callback when modal closes */
   onClose(): void;
+  /** Use a narrower dialog for short confirmations */
+  size?: "default" | "small";
+  /** Accessible name for the dialog */
+  ariaLabel?: string;
   /** Content of the modal */
   children?: ReactNode;
 };
@@ -35,7 +39,7 @@ const ANIMATIONS = {
  * @component
  * Modal that opens in a portal
  */
-export const Modal = ({ open, onClose, children }: ModalProps) => {
+export const Modal = ({ open, onClose, size = "default", ariaLabel, children }: ModalProps) => {
   useEffect(() => {
     document.documentElement.style.overflow = open ? "hidden" : "";
   }, [open]);
@@ -45,7 +49,7 @@ export const Modal = ({ open, onClose, children }: ModalProps) => {
       {open && (
         <LayoutGroup>
           <motion.div
-            className={styles.overlay}
+            className={cx(styles.overlay, size === "small" && styles.centered)}
             variants={ANIMATIONS.overlay}
             initial="closed"
             animate="open"
@@ -54,7 +58,10 @@ export const Modal = ({ open, onClose, children }: ModalProps) => {
             data-testid="overlay"
           >
             <motion.div
-              className={cx(styles.modal)}
+              className={cx(styles.modal, size === "small" && styles.small)}
+              role="dialog"
+              aria-modal="true"
+              aria-label={ariaLabel}
               variants={ANIMATIONS.modal}
               onClick={(e) => {
                 e.stopPropagation();
