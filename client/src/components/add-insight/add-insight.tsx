@@ -18,6 +18,7 @@ export const AddInsight = ({
   const [error, setError] = useState<string | null>(null);
 
   const close = () => {
+    if (saving) return;
     setError(null);
     onClose();
   };
@@ -38,7 +39,7 @@ export const AddInsight = ({
     try {
       await onAdd({ brand: Number(formData.get("brand")), text });
       form.reset();
-      close();
+      onClose();
     } catch {
       setError("Could not add insight. Please try again.");
     } finally {
@@ -66,7 +67,8 @@ export const AddInsight = ({
             className={styles["field-input"]}
             name="text"
             rows={5}
-            placeholder="Something insightful..."
+            placeholder="What have you noticed about this brand?"
+            required
           />
         </label>
         {error && (

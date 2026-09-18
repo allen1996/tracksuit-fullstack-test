@@ -1,10 +1,4 @@
-import {
-  cleanup,
-  fireEvent,
-  render,
-  screen,
-  waitFor,
-} from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { App } from "./app.tsx";
 
@@ -72,7 +66,7 @@ describe("App", () => {
     expect(
       second.parentElement?.querySelector("time")?.getAttribute("dateTime"),
     ).toBe("2026-01-02T00:00:00.000Z");
-    expect(screen.queryByText("We have no insight!")).toBeNull();
+    expect(screen.queryByText("Your next great idea starts here")).toBeNull();
   });
 
   it("shows the empty state after an empty response", async () => {
@@ -82,7 +76,7 @@ describe("App", () => {
     );
 
     render(<App />);
-    expect(await screen.findByText("We have no insight!")).toBeTruthy();
+    expect(await screen.findByText("Your next great idea starts here")).toBeTruthy();
   });
 
   it("shows an error when loading fails", async () => {
@@ -111,7 +105,7 @@ describe("App", () => {
     vi.stubGlobal("fetch", fetchMock);
 
     render(<App />);
-    await screen.findByText("We have no insight!");
+    await screen.findByText("Your next great idea starts here");
     fireEvent.click(screen.getAllByRole("button", { name: "Add insight" })[0]);
     fireEvent.change(screen.getByRole("combobox", { name: "Brand" }), {
       target: { value: "2" },
@@ -127,9 +121,7 @@ describe("App", () => {
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ brand: 2, text: "New insight" }),
     });
-    await waitFor(() =>
-      expect(screen.queryByText("Add a new insight")).toBeNull(),
-    );
+    await waitFor(() => expect(screen.queryByText("Add a new insight")).toBeNull());
   });
 
   it("confirms before deleting and removes the insight after success", async () => {
@@ -161,7 +153,7 @@ describe("App", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Delete insight 1" }));
     fireEvent.click(screen.getByRole("button", { name: "Delete" }));
-    expect(await screen.findByText("We have no insight!")).toBeTruthy();
+    expect(await screen.findByText("Your next great idea starts here")).toBeTruthy();
     expect(fetchMock).toHaveBeenLastCalledWith("/api/insights/1", {
       method: "DELETE",
     });

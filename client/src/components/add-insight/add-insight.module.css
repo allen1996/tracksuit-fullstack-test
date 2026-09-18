@@ -33,3 +33,22 @@
 .error-message {
   color: var(--color-red-500);
 }
+
+.field-input {
+  background: var(--color-bg);
+  border-color: var(--color-border);
+  width: 100%;
+  min-width: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.error-message {
+  color: var(--color-danger);
+}
+
+@media (max-width: 600px) {
+  .submit {
+    align-self: stretch;
+  }
+}

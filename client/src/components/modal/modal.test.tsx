@@ -1,6 +1,8 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { Modal } from "$components/modal/modal.tsx";
+
+afterEach(cleanup);
 
 describe("Modal", () => {
   it("should open and close", () => {
@@ -18,4 +20,28 @@ describe("Modal", () => {
     );
     expect(screen.getByText("Open modal")).toBeTruthy();
   });
+});
+
+it("keeps keyboard focus inside, closes with Escape, and restores focus", () => {
+  const trigger = document.createElement("button");
+  document.body.appendChild(trigger);
+  trigger.focus();
+  const onClose = vi.fn();
+  const { getByRole, unmount } = render(
+    <Modal open onClose={onClose} ariaLabel="Keyboard test">
+      <button type="button">Last action</button>
+    </Modal>,
+  );
+  const close = getByRole("button", { name: "Close dialog" });
+  const last = getByRole("button", { name: "Last action" });
+  expect(document.activeElement).toBe(close);
+  fireEvent.keyDown(document, { key: "Tab", shiftKey: true });
+  expect(document.activeElement).toBe(last);
+  fireEvent.keyDown(document, { key: "Tab" });
+  expect(document.activeElement).toBe(close);
+  fireEvent.keyDown(document, { key: "Escape" });
+  expect(onClose).toHaveBeenCalledOnce();
+  unmount();
+  expect(document.activeElement).toBe(trigger);
+  trigger.remove();
 });

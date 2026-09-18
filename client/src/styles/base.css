@@ -6,6 +6,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-y: scroll;
+  scrollbar-gutter: stable;
   min-height: 100vh;
   text-underline-offset: 0.2em;
   letter-spacing: var(--letter-sm);
@@ -65,4 +66,27 @@ h5,
 h6 {
   font-size: inherit;
   font-weight: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 4px;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  touch-action: manipulation;
+}
+textarea {
+  resize: vertical;
+}
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-heading);
 }

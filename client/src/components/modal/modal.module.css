@@ -1,51 +1,68 @@
 .overlay {
   position: fixed;
+  inset: 0;
   display: flex;
-  justify-content: center;
-  padding: var(--grid-page-gutter);
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: var(--layer-5);
-  backdrop-filter: blur(3px);
-}
-
-.centered {
   align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: #15101e80;
+  z-index: var(--layer-5);
+  backdrop-filter: blur(6px);
 }
-
 .modal {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: var(--size-10);
-  max-width: var(--modal-width, var(--width-sm));
   width: 100%;
-  height: max-content;
-  background: var(--color-bg);
-  padding: var(--size-10);
-  box-shadow: var(--shadow-md);
-  border-radius: var(--radius-xl);
+  max-width: 560px;
+  max-height: calc(100dvh - 48px);
+  overflow-y: auto;
+  background: var(--color-surface);
+  color: var(--color-text);
+  padding: 36px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 24px 100px #0003;
+  border-radius: 28px;
 }
-
 .small {
-  max-width: var(--width-xs);
-  gap: var(--size-6);
-  padding: var(--size-6);
-  translate: 0 -100%;
-
-  @media (max-height: 700px) {
-    translate: none;
-  }
+  max-width: 440px;
 }
-
 .close {
   position: absolute;
-  top: var(--size-6);
-  right: var(--size-6);
-  width: var(--size-5);
-  height: var(--size-5);
+  top: 18px;
+  right: 18px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--color-text-light);
   cursor: pointer;
+}
+.close:hover {
+  background: var(--color-accent-soft);
+  color: var(--color-heading);
+}
+.content > h1,
+.content > h2 {
+  padding-right: 40px;
+  color: var(--color-heading);
+  font-weight: 600;
+}
+.content > p {
+  color: var(--color-text-light);
+  font-size: 14px;
+  line-height: 1.65;
+}
+@media (max-width: 600px) {
+  .overlay {
+    padding: 16px;
+  }
+  .modal {
+    padding: 28px 24px;
+    max-height: calc(100dvh - 32px);
+    border-radius: 24px;
+  }
+  .close {
+    top: 14px;
+    right: 14px;
+  }
 }

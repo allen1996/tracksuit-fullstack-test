@@ -11,6 +11,6 @@
 }
 
 .error {
-  color: var(--color-red-700);
+  color: var(--color-danger);
   margin-top: var(--size-4);
 }

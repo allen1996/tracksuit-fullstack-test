@@ -16,7 +16,7 @@ export function registerStaticFiles(app: Application): void {
     const pathname = ctx.request.url.pathname;
     if (pathname.startsWith("/api")) return;
 
-    const asset = pathname.startsWith("/assets/") ? pathname : "/index.html";
+    const asset = pathname.startsWith("/assets/") || pathname === "/favicon.svg" ? pathname : "/index.html";
     const file = path.resolve(dist, `.${asset}`);
     if (!file.startsWith(`${dist}/`)) {
       ctx.response.status = 404;

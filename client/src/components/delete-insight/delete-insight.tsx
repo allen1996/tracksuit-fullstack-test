@@ -46,7 +46,7 @@ export const DeleteInsight = ({
       ariaLabel="Delete insight"
     >
       <h2 className={styles.heading}>Delete insight?</h2>
-      <p>Are you sure to delete this insight?</p>
+      <p>This insight will be permanently removed. This can’t be undone.</p>
       {error && (
         <p className={styles.error} role="alert">
           Could not delete insight. Please try again.
