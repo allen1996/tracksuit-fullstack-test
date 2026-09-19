@@ -46,7 +46,7 @@ describe("DELETE /insights/:id", () => {
       const rowsBefore = fixture.insights.selectAll();
       const response = await remove("99");
 
-      expect(response.status).toBe(400);
+      expect(response.status).toBe(404);
       expect(await response.json()).toEqual({ error: "Insight not found" });
       expect(fixture.insights.selectAll()).toEqual(rowsBefore);
     });

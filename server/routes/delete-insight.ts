@@ -15,7 +15,7 @@ export function registerDeleteInsightRoute(router: Router, db: Database): void {
 
     const hasDeleted = deleteInsight({ db, id: parsedId.data });
     if (!hasDeleted) {
-      ctx.response.status = 400;
+      ctx.response.status = 404;
       ctx.response.body = { error: "Insight not found" };
       return;
     }
