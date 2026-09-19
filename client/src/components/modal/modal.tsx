@@ -1,4 +1,4 @@
-import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, LayoutGroup, m as motion, useReducedMotion } from "framer-motion";
 import { XIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { useEffect, useRef } from "react";

@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, m as motion, useReducedMotion } from "framer-motion";
 import { LightbulbIcon, Trash2Icon } from "lucide-react";
 import { DeleteInsight } from "$components/delete-insight/delete-insight.tsx";
 import { cx } from "$lib/cx.ts";
 import styles from "./insights.module.css";
 import type { Insight } from "$schemas/insight.ts";
+
+const dateFormatter = new Intl.DateTimeFormat(undefined, { dateStyle: "medium", timeStyle: "short" });
 
 type InsightsProps = {
   insights: Insight[];
@@ -46,10 +48,7 @@ export const Insights = ({ insights, onDelete, className }: InsightsProps) => {
                     </span>
                     <div className={styles["insight-meta-details"]}>
                       <time dateTime={createdAt.toISOString()}>
-                        {createdAt.toLocaleString(undefined, {
-                          dateStyle: "medium",
-                          timeStyle: "short",
-                        })}
+                        {dateFormatter.format(createdAt)}
                       </time>
                       <button
                         type="button"

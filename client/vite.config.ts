@@ -4,6 +4,9 @@ import react from "@vitejs/plugin-react";
 import { searchForWorkspaceRoot } from "vite";
 import { defineConfig } from "vitest/config";
 import process from "node:process";
+import { gzipSync } from "node:zlib";
+import { writeFile } from "node:fs/promises";
+import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import workspaceConfig from "../deno.json" with { type: "json" };
 import clientConfig from "./deno.json" with { type: "json" };
@@ -27,7 +30,33 @@ export default defineConfig(({ command }) => ({
     outDir: "./dist",
     emptyOutDir: true,
   },
-  plugins: [react(), deno()],
+  plugins: [
+    react(),
+    {
+      name: "vite-virtual-modules",
+      enforce: "pre",
+      // Keep Vite's internal preload helper out of the Deno package resolver.
+      resolveId(id) {
+        if (id.startsWith("\0")) return id;
+      },
+    },
+    deno(),
+    {
+      name: "precompress-static-assets",
+      apply: "build",
+      async writeBundle(options, bundle) {
+        // Compress once at build time, rather than on every page request.
+        await Promise.all(
+          Object.values(bundle).filter((entry) => /\.(?:html|css|js)$/.test(entry.fileName)).map((entry) =>
+            writeFile(
+              resolve(options.dir!, `${entry.fileName}.gz`),
+              gzipSync(entry.type === "chunk" ? entry.code : entry.source, { level: 9 }),
+            )
+          ),
+        );
+      },
+    },
+  ],
   resolve: {
     alias: aliases,
   },
