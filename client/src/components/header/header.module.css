@@ -1,8 +1,10 @@
-.header {
+.header,
+:global(.startup-header) {
   padding: 24px 0;
 }
 
-.inner {
+.inner,
+:global(.startup-inner) {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -13,7 +15,8 @@
   background: var(--color-surface);
 }
 
-.logo {
+.logo,
+:global(.startup-logo) {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -24,29 +27,33 @@
   color: var(--color-heading);
 }
 
-.logo svg {
+.logo img,
+:global(.startup-logo) svg {
   width: 32px;
   height: 32px;
-  stroke: currentColor;
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  fill: none;
+  display: block;
+  flex-shrink: 0;
+  border-radius: 30%;
 }
 
-.actions {
+.actions,
+:global(.startup-actions) {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-.themes {
+.themes,
+:global(.startup-themes) {
   display: flex;
   border-radius: 999px;
   background: var(--color-bg);
   padding: 3px;
 }
 
-.themes button {
+.themes button,
+:global(.startup-themes) button {
+  flex-shrink: 0;
   display: grid;
   place-items: center;
   width: 38px;
@@ -56,30 +63,45 @@
   cursor: pointer;
 }
 
-.themes button[aria-pressed="true"] {
+.themes button[aria-pressed="true"],
+:global(.startup-themes) button[aria-pressed="true"] {
   background: var(--color-accent-soft);
   color: var(--color-heading);
 }
 
 @media (max-width: 600px) {
-  .header {
+  .header,
+  :global(.startup-header) {
     padding: 16px 0;
   }
-  .inner {
+  .inner,
+  :global(.startup-inner) {
     border-radius: 24px;
-    flex-wrap: wrap;
-    padding: 16px;
-    gap: 16px;
+    flex-wrap: nowrap;
+    padding: 10px 12px;
+    gap: 8px;
   }
-  .logo {
-    font-size: 24px;
+  .logo,
+  :global(.startup-logo) {
+    font-size: 20px;
+    gap: 6px;
   }
-  .themes button {
-    width: 34px;
+  .logo img,
+  :global(.startup-logo) svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
   }
-  .actions {
-    width: 100%;
+  .actions,
+  :global(.startup-actions) {
+    flex-shrink: 0;
     justify-content: flex-end;
-    gap: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .logo,
+  :global(.startup-logo) {
+    font-size: 18px;
   }
 }

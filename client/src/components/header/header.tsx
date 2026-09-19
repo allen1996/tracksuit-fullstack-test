@@ -33,9 +33,7 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.inner}>
         <a href="/" className={styles.logo} aria-label="Suit Tracker home">
-          <svg viewBox="0 0 32 32" aria-hidden="true">
-            <path d="M7 10h18M16 5v17c0 5 7 5 9 1M7 16h14" />
-          </svg>
+          <img src="/favicon.svg" width="32" height="32" alt="" aria-hidden="true" />
           {HEADER_TEXT}
         </a>
         <div className={styles.actions}>

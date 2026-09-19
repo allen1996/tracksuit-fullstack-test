@@ -17,10 +17,122 @@
       if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
     } catch {}
     </script>
+    <!-- Shared layout styles keep the skeleton aligned with the React page. -->
+    <link rel="stylesheet" href="/styles/variables.css" />
+    <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/routes/app.module.css" />
+    <link rel="stylesheet" href="/components/header/header.module.css" />
+    <link rel="stylesheet" href="/components/button/button.module.css" />
+    <style>
+    body {
+      margin: 0;
+    }
+    .startup,
+    .startup * {
+      box-sizing: border-box;
+    }
+    .startup-mask {
+      color: transparent !important;
+      background: var(--color-border);
+      border-radius: 6px;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+    .startup-hero h1 .startup-mask {
+      background: linear-gradient(transparent 25%, var(--color-border) 25%, var(--color-border) 75%, transparent 75%);
+    }
+    .startup-themes {
+      width: 120px;
+      height: 44px;
+      border-radius: 999px;
+    }
+    .startup-art {
+      border-radius: 50%;
+      background: var(--color-art);
+      opacity: 0.35;
+    }
+    .startup-button {
+      border-radius: 999px;
+    }
+    .startup-state .startup-mask {
+      width: min(180px, 70%);
+      height: 18px;
+    }
+    .startup-status {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .startup-mask {
+        animation: startup-pulse 1.8s ease-in-out infinite;
+      }
+    }
+    @keyframes startup-pulse {
+      50% {
+        opacity: 0.45;
+      }
+    }
+    </style>
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- React replaces this non-interactive skeleton on its first render. -->
+      <div class="startup" role="status" aria-label="Loading Suit Tracker">
+        <span class="startup-status">Loading Suit Tracker…</span>
+        <div class="startup-page" aria-hidden="true">
+          <div class="startup-header">
+            <div class="startup-inner">
+              <div class="startup-logo">
+                <svg viewBox="0 0 32 32" class="startup-mask"></svg>
+                <span class="startup-mask">Suit Tracker</span>
+              </div>
+              <div class="startup-actions">
+                <div class="startup-themes startup-mask"></div>
+              </div>
+            </div>
+          </div>
+          <div class="startup-main">
+            <div class="startup-hero">
+              <div class="startup-intro">
+                <p
+                  class="startup-eyebrow"><svg width="16" height="16" class="startup-mask"></svg><span class="startup-mask">A little insight. A big difference.</span></p>
+                <h1><span class="startup-mask">Good insights.</span><br /><span class="startup-mask">Great next moves.</span></h1>
+                <p
+                  class="startup-description"><span class="startup-mask">A home for what’s happening with your brands.<br class="startup-lineBreak" /> Capture the observations that move you forward.</span></p>
+              </div>
+              <div class="startup-art"></div>
+            </div>
+            <div class="startup-insights">
+              <div class="startup-toolbar">
+                <div>
+                  <h2
+                    class="startup-heading"><span class="startup-mask">Your Insights</span><span class="startup-count startup-mask">0</span></h2>
+                  <p
+                    class="startup-subtitle"><span class="startup-mask">Fresh perspectives, all in one place.</span></p>
+                </div>
+                <div
+                  class="startup-insightActions"><button class="startup-button startup-mask" type="button" disabled tabindex="-1">Add Insight</button></div>
+              </div>
+              <div class="startup-state"><span class="startup-mask"></span></div>
+            </div>
+          </div>
+          <div
+            class="startup-footer"><span class="startup-mask">Suit Tracker</span><span class="startup-mask">Small observations. Bigger possibilities.</span></div>
+        </div>
+      </div>
+    </div>
+    <noscript>
+      <style>
+      .startup {
+        display: none;
+      }
+      </style>
+      <p>Please enable JavaScript to use Suit Tracker.</p>
+    </noscript>
     <script type="module" src="/index.tsx"></script>
   </body>
 </html>

@@ -1,4 +1,5 @@
-.button {
+.button,
+:global(.startup-button) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -36,7 +37,8 @@
 .danger:hover {
   background: #8e1832;
 }
-.button:disabled {
+.button:disabled,
+:global(.startup-button):disabled {
   cursor: not-allowed;
   opacity: 0.55;
 }
