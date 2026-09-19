@@ -68,7 +68,6 @@ export const AddInsight = ({
             name="text"
             rows={5}
             placeholder="What have you noticed about this brand?"
-            required
           />
         </label>
         {error && (
