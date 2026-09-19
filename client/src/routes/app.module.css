@@ -133,14 +133,18 @@
   }
 }
 .insights {
+  --insight-state-height: 290px;
   margin-top: 40px;
 }
 .state {
+  display: grid;
+  place-items: center;
+  min-height: var(--insight-state-height);
   padding: 48px 24px;
   text-align: center;
   border: 1px dashed var(--color-border);
   border-radius: 24px;
-  margin-top: 32px;
+  margin: 24px 0 0;
   color: var(--color-text-light);
 }
 .footer {
@@ -204,6 +208,7 @@
     font-size: 11px;
   }
   .insights {
+    --insight-state-height: 340px;
     margin-top: 30px;
   }
   .footer {

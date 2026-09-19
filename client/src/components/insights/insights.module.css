@@ -72,6 +72,7 @@
   white-space: pre-wrap;
 }
 .empty {
+  min-height: var(--insight-state-height, 290px);
   grid-column: 1 / -1;
   padding: 48px 24px;
   border: 1px dashed var(--color-border);
