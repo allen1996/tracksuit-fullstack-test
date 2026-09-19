@@ -6,6 +6,14 @@ insight for a brand, and delete an insight with confirmation.
 This project completes and extends the [Tracksuit take-home starter](https://github.com/gotracksuit/ts-take-home-test).
 See [Instructions.md](./Instructions.md) for the original brief.
 
+## Implementation approach and AI assistance
+
+I implemented the core functionality myself, including the create and delete endpoints, database operations, and
+frontend integrations for loading, adding, and deleting insights.
+
+I used GPT in the final stage to assist with deployment setup and UI updates, including visual polish, responsive
+layouts, theming, and frontend performance improvements.
+
 ## Key changes and improvements
 
 ### Working insight management
